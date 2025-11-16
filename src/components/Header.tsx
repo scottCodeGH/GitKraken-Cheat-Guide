@@ -14,17 +14,6 @@ export function Header({ onMenuClick }: HeaderProps) {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
 
-  const getOSIcon = () => {
-    switch (preferences.operatingSystem) {
-      case 'mac':
-        return <Apple className="h-4 w-4" />;
-      case 'linux':
-        return <SquareTerminal className="h-4 w-4" />;
-      default:
-        return <Monitor className="h-4 w-4" />;
-    }
-  };
-
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
@@ -70,10 +59,7 @@ export function Header({ onMenuClick }: HeaderProps) {
           </form>
           <Select value={preferences.operatingSystem} onValueChange={setOperatingSystem}>
             <SelectTrigger className="w-[140px] hidden sm:flex" title="Select your operating system">
-              <div className="flex items-center gap-2">
-                {getOSIcon()}
-                <SelectValue />
-              </div>
+              <SelectValue />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="windows">
